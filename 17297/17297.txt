@@ -1,0 +1,21 @@
+주의할점
+M의 최대값이 2^30-1임 -> long long int 사용필요
+
+풀이
+M이 매우 크므로 O(n)은 불가능, 분할정복해야함
+
+Devide:
+	messi 문자열이 피보나치와 유사함을 이용
+	messi(n) = messi(n-1) + ' ' + messi(n-2)
+	
+	pibo[n]이 messi(n)문자열의 길이라면
+	0 < m < pibo[n-1]인 경우)
+		0~pibo[n]의 범위를 줄여서 0 < m < pibo[n-1]의 범위에서 탐색
+	pibo[n-1] < m < pibo[n]인 경우)
+		0~pibo[n]의 범위를 줄여서 pibo[n-1] <= m <= pibo[n]의 범위에서 탐색
+		이때 모든 항에서 pibo[n-1]만큼 감산해서 0 < m - pibo[n-1] < pibo[n-2]로 변환
+	위 과정을 재귀함수로 반복
+	
+Conquer
+	재귀함수의 기저사례: n이 0 혹은 1인 경우
+	기저사례가 나오면 그에 맞는 문자(혹은 문자열) 출력
