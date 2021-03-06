@@ -1,0 +1,18 @@
+LCS문제
+2차원배열을 이용한 dp로 해결
+
+
+2차원배열dp가 있을때
+
+0 0 A C A Y K P
+0 0 0 0 0 0 0 0
+C 0 0 1 1 1 1 1
+A 0 1 1 2 2 2 2
+P 0 1 1 2 2 2 3
+C ...
+A
+K
+
+점화식)
+aString[i] == bString[j]일때 dp[i][j] = dp[i-1][j-1] + 1
+aString[i] != bString[j]일때 dp[i][j] = max(dp[i-1][j], dp[i][j-1])
