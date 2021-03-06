@@ -1,0 +1,12 @@
+탐욕법+소트문제
+x~y까지 그려진 y-x길이의 선분이 있을때,
+
+1. x에대해 오름차순으로 정렬
+2. i번째선분이 앞에 있던 선분에게 덮히는 경우(y_tmp > arr[i].y)
+	continue로 무시
+3. i번째선분이 앞에 있던 선분과 일부 겹치는경우(y_tmp < arr[i].y && y_tmp > arr[i].x)
+	len += arr[i].y - y_tmp
+	y_tmp 재설정
+4. i번째선분이 앞에 있던 선분과 아예 겹치지 않는 경우
+	len += arr[i].y - arr[i].x
+	y_tmp 재설정
