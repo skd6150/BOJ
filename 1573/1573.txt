@@ -1,0 +1,22 @@
+트리+dp+경우의수+트리순회문제
+
+1. 노드의 개수가 N일때 나올 수 있는 이진검색트리의 경우의 수를 계산
+0~N-1까지의 i에 대하여 dp[N]는 dp[i] * dp[N - i - 1]합
+
+2. tree함수를 재귀호출해서 해결함
+
+int tree(long long int idx, long long int right, vector<char> nodes)
+
+nodes의 한 요소를 subtree의 root로 했을때 만들 수 있는 가장 작은 순서(index)를 반환 + root가 나오는 순서대로 save벡터에 저장
+
+파라미터:
+idx: 지금까지 save벡터에 저장된 요소들에 의해 만들어질 수 있는 가장빠른 순서
+right: preorder 순회하면서 남겨진 오른쪽 subtree들의 경우의수
+nodes: subtree를 구성하는 모든 알파벳들
+
+내용:
+1. nodes중 한 요소를 root로 했을때 나올 수 있는 가장 빠른 index계산하고, target보다 작은 index중 가장 큰 index를 가지는 요소를 root로 선정
+2. nodes중 root보다 작은 요소들, 큰 요소들을 각각 smaller_nodes, bigger_nodes에 저장
+3. preorder로 순회해야 하므로 작은쪽부터 호출함. 호출하는 함수는 tree(index, right * dp[bigger_nodes.size()], smaller_nodes)
+4. 이후 큰부분 호출. 호출하는 함수는 tree(index, right, bigger_nodes)
+5. 두번의 tree호출이 끝나면 nodes의 모든 요소들이 save에 저장된 후이고 반환값은 nodes의 모든 요소에 의해 만들어질 수 있는 가장 빠른 순서임
