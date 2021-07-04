@@ -1,0 +1,9 @@
+구현(브루트포스) + BFS문제
+
+벽을 3개의 조합은 next_permutation함수를 사용하면 쉽게 해결 할 수 있음
+
+do-while문 안에서 fieldTmp에 field를 복사하는 것 보다 field를 3개씩 수정해나가는게 더 빠를 것 같았는데 전자가 더 빨랐음. (???)
+https://www.acmicpc.net/source/30635577 (fieldTmp에 field를 복사하는 코드)
+https://www.acmicpc.net/source/30635541 (field를 3개씩 수정하는 코드)
+
+3번째 TC에 대해 구름ide에서는 2초넘는 실행시간이 있었는데 실제로 채점에서는 훨씬 빨랐다. 실행환경의 차이이거나 채점데이터가 유한듯
