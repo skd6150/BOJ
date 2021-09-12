@@ -1,0 +1,58 @@
+KMP, 브루트포스(순열) 문제
+
+주어진 단어의 개수가 N일때 0~N-1까지 벡터에 넣고 순열로 돌림
+순열을 이용해 모든 조합의 새로운 단어를 만듬 (브루트포스)
+
+새로운단어 str에서 T(i) = T를 구하기위해
+str+str에서 str이 몇개있는지 탐색 (KMP)
+
+
+ex) KMP에서 pi배열구하는 과정
+pattern = aabaac이라고 할때
+
+#1 (begin:1, matched:0)-------------------------------
+ *
+aabaac			S[begin+matched]=a
+ aabaac			S[matched]=a
+
+matched++, matched=1
+pi[begin+matched-1] = pi[1] = 1(=matched)
+
+#2 (begin:1, matched:1)-------------------------------
+  * 
+aabaac			S[begin+matched]=b
+ aabaac		S[matched]=a
+
+begin += matched - pi[matched-1], begin=2
+matched = pi[matched-1], matched=0
+
+#3 (begin:2, matched:0)-------------------------------
+  *
+aabaac			S[begin+matched]=b
+  aabaac		S[matched]=a
+
+begin++
+
+#4 (begin:3, matched:0)-------------------------------
+   *
+aabaac			S[begin+matched]=a
+   aabaac		S[matched]=a
+
+matched++, matched=1
+pi[begin+matched-1] = pi[3] = 1(=matched)
+
+#5 (begin:3, matched:1)-------------------------------
+    *
+aabaac			S[begin+matched]=a
+   aabaac		S[matched]=a
+
+matched++, matched=2
+pi[begin+matched-1] = pi[4] = 2(=matched)
+
+#6 (begin:3, matched:3)-------------------------------
+     *
+aabaac			S[begin+matched]=c
+   aabaac		S[matched]=b
+
+begin += matched - pi[matched-1], begin=6
+matched = pi[matched-1], matched=0
