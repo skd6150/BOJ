@@ -1,0 +1,5 @@
+KMP문제
+
+입력되는 문자열의 길이가 매우 큼 (최대 100만)
+scanf("%[^\n]", &variable) -> \n을 delimeter로 가짐
+scanf("%[1-3]", &variable) -> 1,2,3 외의 문자를 delimeter로 가짐
