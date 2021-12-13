@@ -1,0 +1,9 @@
+에라토스테네스(소수판정) + 투포인터
+
+1. 4000000이하의 소수를 구해서 벡터에 넣음
+2. 투포인터 start, end와 start~end의 부분합 sum 설정
+3-1. sum이 target보다 크면 start+1, sum - decimal[start]
+3-2. end가 끝까지 도달했으면 투포인터 반복문 종료
+ -> end == decimal.size()일때의 답을 구하기 위해선 이 부분에서 검사해야함
+3-3. sum이 target보다 작으면 end+1, sum + decimal[end]
+4. sum이 target과 같으면 res+1
