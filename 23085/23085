@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <string>
+using namespace std;
+
+int main() {
+    int n, k, start=0;
+    string str;
+    cin >> n >> k;
+    vector<vector<int>> edges(n+1);
+    vector<int> check(n+1, -1);
+    for(int i=0; i<=n; i++) {
+        for(int j=0; j<=k; j++) {
+            if(!(j<=i && k-n+i<=j)) continue;
+            int numH = i + k -2*j;
+            int numT = n - i - k + 2*j;
+            if(numT < 0 || numT > n) continue;
+            if(numH < 0 || numH > n) continue;
+            if(numH == i) continue;
+            edges[i].push_back(numH);
+        }
+    }
+    cin >> str;
+    for(char c: str) {
+        if(c=='H') start++;
+    }
+    queue<pair<int, int>> q;
+    q.push(make_pair(start, 0));
+    check[start] = 0;
+    while(!q.empty()) {
+        int cur = q.front().first;
+        int count = q.front().second;
+        q.pop();
+        for(int next: edges[cur]) {
+            if(check[next] != -1) continue;
+            check[next] = count+1;
+            q.push(make_pair(next, count+1));
+        }
+    }
+    cout << check[0] << endl;
+}
