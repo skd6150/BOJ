@@ -1,0 +1,9 @@
+링크드리스트
+
+리스트가 비어있을 때 삭제하는것, iterator의 범위 초과를 주의해야 함
+
+list에 insert하면 iterator가 가르키는 값 앞에 새로 값이 생기고 iterator는 값이 변화하지 않아 이전과 같은 값을 가르킴
+빈 list는 list.begin()과 list.end()가 같고, 해당 list에 값을 넣으면 list.begin()에 값이 들어가고 list.end()는 하나 뒤로 밀리고 iterator는 list.end()를 가르킴
+
+list에서 iterator인 idx의 값을 erase하면 idx의 앞에있는 값이 지워지고 지워진 값 바로 다음 원소의 iterator가 반환됨
+따라서 list.end()에서 erase하면 마지막 원소가 지워지고 반대로 list.begin()에서 erase하면 오류발생
