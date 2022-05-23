@@ -1,0 +1,6 @@
+dp
+
+dp[i][j]를 왼쪽에서 i개의 벼, 오른쪽에서 j개의 벼를 수확한 경우라고 정의
+벼의 가치 coef는 i+j임
+
+점화식: dp[i][j] = max(dp[i-1][j] + coef * arr[i-1], dp[i][j-1] + coef * arr[n-j])
